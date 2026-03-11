@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cronograma de Estudos - Instituto Impulso</title>
+    <title>Cronograma de Estudos - A Glória do Rei e do Seu Reino</title>
+    <!-- Fonte Inter premium -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Azul Noturno Profissional */
-            --bg-body: #0b1121;
-            --card-bg: #16223f;
-            --card-border: #233253;
-            
+            /* Paleta de Cores inspirada na sua imagem */
             --text-main: #f8fafc;
-            --text-muted: #94a3b8;
+            --text-muted: #cbd5e1;
             
             /* Cores de Destaque */
-            --domingo-cor: #f59e0b; /* Dourado premium */
-            --domingo-bg: #1c2331;
+            --domingo-cor: #f59e0b; /* Dourado (remetendo aos pães e à cesta) */
+            --domingo-bg: rgba(245, 158, 11, 0.15);
             
-            --sabado-cor: #38bdf8; /* Azul cyan brilhante */
-            --sabado-bg: #132745;
+            --sabado-cor: #38bdf8; /* Azul claro */
+            --sabado-bg: rgba(56, 189, 248, 0.15);
             
-            --semana-cor: #6366f1; /* Indigo executivo */
-            --semana-bg: #16223f;
+            --semana-cor: #818cf8; /* Azul Royal claro */
+            --semana-bg: rgba(10, 25, 60, 0.65); /* Fundo de vidro escurecido */
+            
+            --card-border: rgba(255, 255, 255, 0.15);
         }
 
         * {
@@ -34,7 +33,15 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #070b14 0%, #0f172a 100%);
+            
+            /* AQUI ESTÁ O SEU FUNDO! Uma película escura transparente por cima da sua foto para garantir a leitura */
+            background-color: #001F7F; 
+            background-image: linear-gradient(rgba(0, 15, 50, 0.6), rgba(0, 10, 30, 0.85)), url('fundo.jpeg');
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            
             color: var(--text-main);
             padding: 25px 15px;
             -webkit-font-smoothing: antialiased;
@@ -47,14 +54,18 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            /* Efeito de Vidro (Glassmorphism) */
+            background: rgba(10, 20, 50, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            
             color: #ffffff;
             padding: 30px 20px;
             border-radius: 16px;
             text-align: center;
             margin-bottom: 30px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            border: 1px solid #334155;
+            border: 1px solid var(--card-border);
             position: relative;
             overflow: hidden;
         }
@@ -66,22 +77,22 @@
             top: 0;
             left: 0;
             right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #38bdf8, #6366f1, transparent);
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #f59e0b, #38bdf8, transparent);
         }
 
         .header h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 800;
             letter-spacing: -0.5px;
             margin-bottom: 8px;
             text-transform: uppercase;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .header p {
             font-size: 15px;
-            color: #94a3b8;
+            color: #e2e8f0;
             font-weight: 500;
             letter-spacing: 1px;
             text-transform: uppercase;
@@ -95,17 +106,21 @@
 
         .card {
             display: flex;
-            background: var(--card-bg);
+            /* Efeito de Vidro Fosco nos cartões */
+            background: var(--semana-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            
             border-radius: 14px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
             border: 1px solid var(--card-border);
             transition: transform 0.2s ease, border-color 0.2s ease;
         }
 
         .card:hover {
             transform: translateY(-2px);
-            border-color: #475569;
+            border-color: rgba(255, 255, 255, 0.4);
         }
 
         /* Cores das laterais do Cartão */
@@ -121,7 +136,7 @@
             min-width: 90px;
             padding: 15px 10px;
             border-right: 1px solid var(--card-border);
-            background: rgba(0, 0, 0, 0.15);
+            background: rgba(0, 0, 0, 0.3);
         }
 
         .card.domingo .date-box { background-color: var(--domingo-bg); }
@@ -137,20 +152,20 @@
 
         .card.domingo .day-name { color: var(--domingo-cor); }
         .card.sabado .day-name { color: var(--sabado-cor); }
-        .card.semana .day-name { color: #818cf8; }
+        .card.semana .day-name { color: var(--semana-cor); }
 
         .day-num {
             font-size: 28px;
             font-weight: 800;
             color: #ffffff;
             line-height: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .month {
             font-size: 12px;
             font-weight: 600;
-            color: var(--text-muted);
+            color: #cbd5e1;
             margin-top: 4px;
             letter-spacing: 1px;
         }
@@ -168,19 +183,20 @@
             align-items: center;
             font-size: 17px;
             font-weight: 700;
-            color: #f8fafc;
+            color: #ffffff;
             margin-bottom: 8px;
             letter-spacing: -0.2px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.6);
         }
 
-        /* Ícone de perfil SVG (tom claro) */
+        /* Ícone de perfil SVG */
         .pastor-name::before {
             content: '';
             display: inline-block;
             width: 18px;
             height: 18px;
             margin-right: 8px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23e2e8f0'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'/%3E%3C/svg%3E");
             background-size: cover;
         }
 
@@ -191,16 +207,16 @@
             align-items: flex-start;
             font-size: 14.5px;
             line-height: 1.5;
-            color: #cbd5e1;
-            font-weight: 400;
+            color: #e2e8f0;
+            font-weight: 500;
         }
 
         .topic-line strong {
             color: #ffffff;
-            margin-right: 4px;
+            margin-right: 5px;
         }
 
-        /* Ícone de livro SVG (tom claro) */
+        /* Ícone de livro SVG */
         .topic-line::before {
             content: '';
             display: inline-block;
@@ -209,17 +225,17 @@
             margin-right: 8px;
             margin-top: 3px;
             flex-shrink: 0;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2364748b'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23cbd5e1'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253'/%3E%3C/svg%3E");
             background-size: cover;
         }
 
         .topic-duplo {
             margin-top: 10px;
             padding-top: 10px;
-            border-top: 1px dashed rgba(255,255,255,0.1);
+            border-top: 1px dashed rgba(255,255,255,0.25);
         }
 
-        /* Ajustes para Telas Pequenas (Celular) */
+        /* Ajustes para Celular */
         @media (max-width: 480px) {
             .card {
                 flex-direction: row;
