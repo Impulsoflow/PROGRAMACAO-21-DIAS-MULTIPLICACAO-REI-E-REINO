@@ -1,23 +1,325 @@
-Data	Palestrante	Tema de Ensino
-16/03	Rogério - Santo André	1. Jesus - a plenitude da revelação de Deus
-17/03	Fábio - Santo André	2. Do império das trevas para o reino do filho amado
-18/03	Fabio - Indaiatuba	3. A grandiosidade de Jesus
-19/03	Alan - Santo André	4. Igreja - a utopia do Reino de Deus
-20/03	Falcão - Santo André	5. Por que Jesus sendo Deus precisou se encarnar?
-21/03	Tiago - Sumaré	6. A constituição do Reino
-22/03	Gil - Indaiatuba	7. Jesus Cristo é o grande Eu Sou
-23/03	Alex - Peruz	8. A diferença entre o Reino de Deus e a Igreja
-24/03	Josafa - GAIV	9. A visão do Cristo glorificado e vencedor
-25/03	Oseas - Taipas	10. A diferença do Reino de Cristo para os reinos deste mundo
-26/03	Jeferson - Atibaia	11. Em tempos difíceis, não temas, olhe para Jesus!
-27/03	Beto	12. A presença espiritual do Reino no tempo presente
-28/03	Victor - Represa	13. Cristo é tudo em todos
-29/03	César - São Mateus	14. A transfiguração do rei e os equívocos dos súditos
-30/03	Stélio - Araçatuba	15. Jesus Cristo é incomparavelmente superior
-31/03	Reginaldo - Ibirarema	16. O maior no Reino dos Céus
-01/04	Pármenas - Dracena	17. Os três ofícios de Cristo
-02/04	Luiz - Sorocaba	18. O reconhecimento futuro da soberania do Reino de Deus
-03/04	Rogério - Santo André	19. Predicativos de Jesus, o grande Senhor e Salvador
-04/04	Fábio - Santo André	20. O Reino de Deus já chegou
-05/04	Fabio - Indaiatuba	21. Segunda vinda de Jesus - o dia mais glorioso da Terra
-06/04	Alan - Santo André	22. O Reino de Deus presente, mas ainda está por vir
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronograma de Estudos - Livro</title>
+    <style>
+        :root {
+            --bg-page: #f4f7f6;
+            --text-main: #2c3e50;
+            --cor-domingo: #fff4e6;
+            --cor-domingo-borda: #f39c12;
+            --cor-sabado: #eaf4fd;
+            --cor-sabado-borda: #3498db;
+            --cor-semana: #ffffff;
+            --cor-semana-borda: #ecf0f1;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            margin: 5px 0 0 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-radius: 0 0 12px 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background-color: #34495e;
+            color: white;
+            text-align: left;
+            padding: 15px;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+            vertical-align: middle;
+        }
+
+        /* Cores Específicas para os Dias */
+        tr.domingo {
+            background-color: var(--cor-domingo);
+            border-left: 5px solid var(--cor-domingo-borda);
+        }
+
+        tr.sabado {
+            background-color: var(--cor-sabado);
+            border-left: 5px solid var(--cor-sabado-borda);
+        }
+
+        tr.semana {
+            background-color: var(--cor-semana);
+            border-left: 5px solid transparent;
+        }
+
+        /* Efeito Interativo */
+        tr:hover {
+            transform: scale(1.01);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            transition: all 0.2s ease;
+            z-index: 10;
+            position: relative;
+        }
+
+        .data-badge {
+            display: inline-block;
+            background: #2c3e50;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .domingo .data-badge { background: var(--cor-domingo-borda); }
+        .sabado .data-badge { background: var(--cor-sabado-borda); }
+
+        .dia-semana {
+            font-size: 12px;
+            color: #7f8c8d;
+            display: block;
+            margin-top: 4px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .pastor-name {
+            font-weight: bold;
+            color: #2980b9;
+            font-size: 16px;
+        }
+
+        .domingo .pastor-name { color: #d35400; }
+
+        .tema-texto {
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .tema-duplo {
+            display: block;
+            margin-top: 6px;
+            padding-top: 6px;
+            border-top: 1px dashed rgba(0,0,0,0.1);
+        }
+
+        /* Responsividade para Smartphone (Estilo Calendário/Card) */
+        @media (max-width: 600px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            thead { display: none; }
+            
+            tr {
+                margin: 10px 15px;
+                border-radius: 8px;
+                border: 1px solid #ddd;
+                border-left: 6px solid #ccc;
+            }
+
+            tr.domingo { border-left-color: var(--cor-domingo-borda); }
+            tr.sabado { border-left-color: var(--cor-sabado-borda); }
+            tr.semana { border-left-color: #bdc3c7; }
+
+            td {
+                padding: 12px 15px;
+                border-bottom: none;
+                position: relative;
+            }
+
+            td:nth-of-type(1) {
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                padding-bottom: 10px;
+            }
+
+            td::before {
+                content: attr(data-label);
+                font-size: 11px;
+                text-transform: uppercase;
+                color: #95a5a6;
+                display: block;
+                margin-bottom: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>Escala de Estudos Diários</h1>
+        <p>Período: 16 de Março a 05 de Abril</p>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th width="15%">Data</th>
+                <th width="25%">Pastor</th>
+                <th width="60%">Tema de Ensino</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- SEMANA 1 -->
+            <tr class="domingo">
+                <td data-label="Data">
+                    <span class="data-badge">16/03</span>
+                    <span class="dia-semana">Domingo</span>
+                </td>
+                <td data-label="Pastor"><span class="pastor-name">Rogério - Santo André</span></td>
+                <td data-label="Tema de Ensino">
+                    <div class="tema-texto"><strong>1.</strong> Jesus - a plenitude da revelação de Deus</div>
+                    <div class="tema-texto tema-duplo"><strong>2.</strong> Do império das trevas para o reino do filho amado</div>
+                </td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">17/03</span><span class="dia-semana">Segunda</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Fábio - Santo André</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>3.</strong> A grandiosidade de Jesus</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">18/03</span><span class="dia-semana">Terça</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Fabio - Indaiatuba</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>4.</strong> Igreja - a utopia do Reino de Deus</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">19/03</span><span class="dia-semana">Quarta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Alan - Santo André</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>5.</strong> Por que Jesus sendo Deus precisou se encarnar?</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">20/03</span><span class="dia-semana">Quinta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Falcão - Santo André</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>6.</strong> A constituição do Reino</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">21/03</span><span class="dia-semana">Sexta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Tiago - Sumaré</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>7.</strong> Jesus Cristo é o grande Eu Sou</span></td>
+            </tr>
+            <tr class="sabado">
+                <td data-label="Data"><span class="data-badge">22/03</span><span class="dia-semana">Sábado</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Gil - Indaiatuba</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>8.</strong> A diferença entre o Reino de Deus e a Igreja</span></td>
+            </tr>
+
+            <!-- SEMANA 2 -->
+            <tr class="domingo">
+                <td data-label="Data"><span class="data-badge">23/03</span><span class="dia-semana">Domingo</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Rogério - Santo André</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>9.</strong> A visão do Cristo glorificado e vencedor</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">24/03</span><span class="dia-semana">Segunda</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Alex - Peruz</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>10.</strong> A diferença do Reino de Cristo para os reinos deste mundo</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">25/03</span><span class="dia-semana">Terça</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Josafa - GAIV</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>11.</strong> Em tempos difíceis, não temas, olhe para Jesus!</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">26/03</span><span class="dia-semana">Quarta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Oseas - Taipas</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>12.</strong> A presença espiritual do Reino no tempo presente</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">27/03</span><span class="dia-semana">Quinta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Jeferson - Atibaia</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>13.</strong> Cristo é tudo em todos</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">28/03</span><span class="dia-semana">Sexta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Beto</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>14.</strong> A transfiguração do rei e os equívocos dos súditos</span></td>
+            </tr>
+            <tr class="sabado">
+                <td data-label="Data"><span class="data-badge">29/03</span><span class="dia-semana">Sábado</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Victor - Represa</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>15.</strong> Jesus Cristo é incomparavelmente superior</span></td>
+            </tr>
+
+            <!-- SEMANA 3 -->
+            <tr class="domingo">
+                <td data-label="Data"><span class="data-badge">30/03</span><span class="dia-semana">Domingo</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Rogério - Santo André</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>16.</strong> O maior no Reino dos Céus</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">31/03</span><span class="dia-semana">Segunda</span></td>
+                <td data-label="Pastor"><span class="pastor-name">César - São Mateus</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>17.</strong> Os três ofícios de Cristo</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">01/04</span><span class="dia-semana">Terça</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Stélio - Araçatuba</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>18.</strong> O reconhecimento futuro da soberania do Reino de Deus</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">02/04</span><span class="dia-semana">Quarta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Reginaldo - Ibirarema</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>19.</strong> Predicativos de Jesus, o grande Senhor e Salvador</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">03/04</span><span class="dia-semana">Quinta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Pármenas - Dracena</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>20.</strong> O Reino de Deus já chegou</span></td>
+            </tr>
+            <tr class="semana">
+                <td data-label="Data"><span class="data-badge">04/04</span><span class="dia-semana">Sexta</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Luiz - Sorocaba</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>21.</strong> Segunda vinda de Jesus - o dia mais glorioso da Terra</span></td>
+            </tr>
+            <tr class="sabado">
+                <td data-label="Data"><span class="data-badge">05/04</span><span class="dia-semana">Sábado</span></td>
+                <td data-label="Pastor"><span class="pastor-name">Fábio - Santo André</span></td>
+                <td data-label="Tema de Ensino"><span class="tema-texto"><strong>22.</strong> O Reino de Deus presente, mas ainda está por vir</span></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
